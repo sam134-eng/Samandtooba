@@ -1,0 +1,89 @@
+{
+ "cells": [
+  {
+   "cell_type": "code",
+   "execution_count": 1,
+   "id": "f8740a1e-f01d-4fe0-b523-daf5ee98f973",
+   "metadata": {},
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "Sigmoid Output:\n",
+      " [[0.26894142 0.5        0.73105858]\n",
+      " [0.88079708 0.11920292 0.62245933]]\n",
+      "Sigmoid Backward Gradient:\n",
+      " [[ 0.19661193  0.125      -0.09830597]\n",
+      " [-0.01049936  0.02099872  0.09400148]]\n"
+     ]
+    }
+   ],
+   "source": [
+    "import numpy as np\n",
+    "\n",
+    "# Sigmoid Activation Function\n",
+    "class Sigmoid:\n",
+    "    def __init__(self):\n",
+    "        self.output = None\n",
+    "\n",
+    "    def forward(self, x):\n",
+    "        \"\"\"Forward pass for Sigmoid.\"\"\"\n",
+    "        self.output = 1 / (1 + np.exp(-x))\n",
+    "        return self.output\n",
+    "\n",
+    "    def backward(self, dout):\n",
+    "        \"\"\"Backward pass for Sigmoid.\"\"\"\n",
+    "        dx = dout * self.output * (1 - self.output)\n",
+    "        return dx\n",
+    "\n",
+    "\n",
+    "\n",
+    "\n",
+    "# Example to Test Activation Functions\n",
+    "if __name__ == \"__main__\":\n",
+    "    x = np.array([[-1.0, 0.0, 1.0], [2.0, -2.0, 0.5]])  # Example input\n",
+    "    dout = np.array([[1.0, 0.5, -0.5], [-0.1, 0.2, 0.4]])  # Example gradient\n",
+    "\n",
+    "    # Sigmoid Example\n",
+    "    sigmoid = Sigmoid()\n",
+    "    sigmoid_out = sigmoid.forward(x)\n",
+    "    sigmoid_grad = sigmoid.backward(dout)\n",
+    "    print(\"Sigmoid Output:\\n\", sigmoid_out)\n",
+    "    print(\"Sigmoid Backward Gradient:\\n\", sigmoid_grad)\n",
+    "\n",
+    "    \n",
+    "    \n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "id": "9f0e72f9-7ffc-4fa6-8a26-e22962b58f04",
+   "metadata": {},
+   "outputs": [],
+   "source": []
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3 (ipykernel)",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.12.4"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 5
+}
